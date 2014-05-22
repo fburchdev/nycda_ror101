@@ -1,0 +1,51 @@
+nypl.bibliocommons.com 
+ focusing on the "My Shelves" feature of the New York Public Library website.
+
+ For example, here is mine: 
+
+http://nypl.bibliocommons.com/collection/show/95209161_franburch/library/completed
+
+For the sake of simplicity, I have only modeled users, shelves, and books, and excluded some other items that could be included, such as Audiobooks, Movies & TV, etc.
+
+One user may have one shelf. 
+One shelf may have many books.
+Each shelf item (shelves_books) may have one status.
+One book may have one format. (book_formats)
+
+Book shelves may be filtered by statuses, such as In Progress, Completed, For Later.
+
+users
+-------
+user_id integer		primary key
+user_name string
+user_number integer
+
+shelves
+-------
+shelf_id integer	primary key
+user_id integer		foreign key
+
+shelves_books (This join table supports the most important relationship.)
+-------------
+shelf_book_id integer 	primary key
+shelf_id integer		foreign key
+book_id integer			foreign key
+status_id integer		foreign key
+
+books
+-----
+book_id integer				primary key
+title string
+author string
+book_format_id integer		foreign key
+publication_date datetime
+
+book_formats (e.g. Paperback, Hardback, epub)
+------------
+format_id integer			primary key
+format string
+
+book_statuses (In Progres, Completed, For Later)
+-------------
+status_id integer			primary key
+status string
