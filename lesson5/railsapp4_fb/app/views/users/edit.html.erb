@@ -1,0 +1,13 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_for @user, html: {method: :put} do |f| %>
+  <%=f.label :first_name %>
+  <%=f.text_field :first_name %>
+  <%=f.label :last_name %>
+  <%=f.text_field :last_name %>
+  <%=f.label :login_name %>
+  <%=f.text_field :login_name %>
+  <%=f.submit :edit %>
+<% end %>
+
+<!-- on submit field maybe edit, maybe update - try and see -->
