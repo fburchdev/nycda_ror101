@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'posts/new'
+  post 'posts/new'
 
   get 'posts/create'
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get 'posts/index'
 
   get 'posts/show'
+  #match '/posts/:id', to: 'posts#show' as: :posts
 
   get 'sessions/new'
 
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :sessions
+  resources :posts #allows posts/new visibility. Why? --FB
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
