@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def create
     params[:post][:user_id] = session[:user_id]
+    #puts params[:post]
     @post = Post.new(params[:post])
     if @post.save
       flash[:notice] = "Your post was created successfully."
@@ -22,6 +23,8 @@ class PostsController < ApplicationController
   end
 
   def index
+    @user = User.find(session[:user_id])
+    @posts = Post.where(user_id: params[:user_id])
   end
 
   def show
