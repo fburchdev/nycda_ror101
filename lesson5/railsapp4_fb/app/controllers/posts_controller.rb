@@ -27,6 +27,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    puts "My destroy method was called here. --FB"
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = 'Post deleted.'
+    else
+     flash[:alert] = 'There was a problem deleting
+     the post.'
+    end
+    redirect_to user_path session[:user_id]
   end
 
   def index
