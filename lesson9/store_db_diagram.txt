@@ -1,0 +1,45 @@
+User 
+Card
+Order
+Products
+
+One user may have many cards.
+One user may have many orders.
+One order may have many products.
+One order may have one card. (For the sake of simplicity.)
+
+
+User
+-----
+id integer pk
+first_name string
+last_name string
+email string unique required
+
+Card
+-----
+id integer pk
+user_id fk
+card_number integer unique
+expiration_date datetime required
+billing_address string required
+
+Product
+-------
+id integer pk
+product_name string required
+product_number integer unique
+
+Products_Orders join table 
+---------
+id integer pk
+product_id integer fk
+order_id integer fk
+product_quantity integer
+
+Order
+-----
+id integer pk
+user_id integer fk
+card_id integer fk
+
